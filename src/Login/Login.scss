@@ -1,0 +1,18 @@
+.login-form {
+  margin-top: 5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 41.2rem;
+  background-image: url('../assets/theatre-bg.jpg');
+  background-size: cover;
+}
+
+.email-input {
+  width: 100%;
+}
+
+.password-input {
+  width: 100%;
+}
