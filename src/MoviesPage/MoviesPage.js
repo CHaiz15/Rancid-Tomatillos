@@ -8,8 +8,9 @@ const MoviesPage = ({ movies }) => {
   return (
     <section className='movies-page'>
       <div className='film-block'></div>
-      <h1>Movies...</h1>
-      {listOfMovies}
+      <section className='movies-container'>
+        {listOfMovies}
+      </section>
     </section>
   )
 }
