@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './App.scss';
 import MoviesPage from '../MoviesPage/MoviesPage.js';
+import Login from '../Login/Login'
 
 class App extends Component {
   constructor() {
@@ -21,9 +25,10 @@ class App extends Component {
       <main className="App">
         <nav>
           <div>Rancid Tomas</div>
-          <button className='login-btn'>Login</button>
+          <NavLink className='login-btn' to='/login' type='button'>Login</NavLink>
         </nav>
-        <MoviesPage />
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/' component={MoviesPage} />
       </main>
     );
   }
