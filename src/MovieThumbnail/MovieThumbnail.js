@@ -1,9 +1,9 @@
 import React from 'react';
 
-const MovieThumbnail = () => {
+const MovieThumbnail = ({ title }) => {
   return (
     <div>
-      <h2>Movie Thumbnail...</h2>
+      <h2>{title}</h2>
     </div>
   )
 }
