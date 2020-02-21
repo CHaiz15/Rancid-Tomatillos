@@ -21,6 +21,10 @@ class App extends Component {
       .catch(err => err)
   }
 
+  logout = () => {
+    window.location.href = '/';
+  }
+
   render() {
     return (
       <main className="App">
@@ -29,7 +33,12 @@ class App extends Component {
             <div className='film-icon'></div>
             <div>Rancid Tomas</div>
           </div>
-          <NavLink className='login-btn' to='/login' type='button'>Login</NavLink>
+          {this.props.user.name ? 
+            <div>
+              <h3>Welcome, {this.props.user.name}</h3>
+              <button onClick={this.logout}>Logout</button>
+            </div>:
+            <NavLink className='login-btn' to='/login' type='button'>Login</NavLink>}
         </nav>
         <Route exact path='/login' component={Login} />
         <Route exact path='/' component={MoviesPage} />
@@ -47,6 +56,7 @@ class App extends Component {
 
 const mapStateToProps = state => ({
   movies: state.movies,
+  user: state.user,
 })
 
 const mapDispatchToProps = dispatch => ({

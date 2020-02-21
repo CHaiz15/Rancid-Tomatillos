@@ -26,16 +26,18 @@ export class Login extends Component {
 
   render() {
     return(
-      <section>
+      <section className='login-form'>
         <form>
           <label>Email:</label>
           <input 
+            className='email-input'
             name='email' 
             value={this.state.email} 
             onChange={(e) => this.handleChange(e)}
           />
           <label>Password:</label>
           <input 
+            className='password-input'
             type='password'
             name='password' 
             value={this.state.password} 
