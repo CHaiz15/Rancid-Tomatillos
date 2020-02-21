@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import './App.scss';
 import MoviesPage from '../MoviesPage/MoviesPage.js';
 import Login from '../Login/Login'
+import MovieDetails from '../MovieDetails/MovieDetails.js'
 import { loadMovies } from '../Actions'
 
 class App extends Component {
@@ -32,6 +33,13 @@ class App extends Component {
         </nav>
         <Route exact path='/login' component={Login} />
         <Route exact path='/' component={MoviesPage} />
+        <Route path='/movies/:id' render={({ match }) => {
+          const movie = this.props.movies.find(movie => parseInt(match.params.id) === movie.id)
+          if (!movie) {
+            return (<div>This movie does not exist! </div>);  
+          }
+          return <MovieDetails {...movie} />
+        }} />
       </main>
     );
   }
