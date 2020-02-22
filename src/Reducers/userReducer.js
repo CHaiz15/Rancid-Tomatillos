@@ -1,10 +1,10 @@
-export const userReducer = (state = {}, action) => {
+export const userReducer = (state = {loggedOut: true}, action) => {
   switch (action.type) {
     case 'SET_USER':
-      return action.user.user;
-    case 'SET_RATINGS':
-      state.ratings = action.ratings;
-      return state;
+      return {
+        name: action.name,
+        id: action.id,
+      }
     default:
       return state;
   }

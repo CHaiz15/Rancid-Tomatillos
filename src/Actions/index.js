@@ -1,11 +1,12 @@
 export const setUser = user => ({
   type: 'SET_USER',
-  user
+  id: user.user.id, 
+  name: user.user.name,
 })
 
 export const setRatings = ratings => ({
   type: 'SET_RATINGS',
-  ratings
+  ratings: ratings.ratings
 })
 
 export const loadMovies = movies => ({
