@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import { fetchUser } from '../apiCalls';
-import { setUser } from '../Actions';
+import { fetchUser, getRatings } from '../apiCalls';
+import { setUser, setRatings } from '../Actions';
 import { connect } from 'react-redux';
 import './Login.scss';
 
@@ -17,7 +17,13 @@ export class Login extends Component {
   handleSubmit = () => {  
     const { email, password } = this.state;
     fetchUser( email, password ) 
-      .then(data => this.props.setUser(data))
+      .then(data => {
+        getRatings(data.user.id)
+          .then(ratings => {
+            this.props.setUser(data)
+            this.props.setRatings(ratings)
+          })
+      })
   }
 
   handleChange = (e) => {
@@ -26,8 +32,8 @@ export class Login extends Component {
 
   render() {
     return(
-      <section className='login-form'>
-        <form>
+      <section className='login-container'>
+        <form className='login-form'> 
           <label>Email:</label>
           <input 
             className='email-input'
@@ -55,8 +61,13 @@ export class Login extends Component {
   }
 }
 
-export const mapDispatchToProps = dispatch => ({
-  setUser: user => dispatch(setUser(user))
+export const mapStateToProps = (state) => ({
+  user: state.user
 })
 
-export default connect(null, mapDispatchToProps)(Login);
+export const mapDispatchToProps = dispatch => ({
+  setUser: user => dispatch(setUser(user)),
+  setRatings: ratings => dispatch(setRatings(ratings))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
