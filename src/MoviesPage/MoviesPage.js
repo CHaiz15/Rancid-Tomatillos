@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const MoviesPage = ({ movies }) => {
   const listOfMovies = movies.map(movie => {
     const { id } = movie;
-    return <Link to={`/movies/${id}`}><MovieThumbnail {...movie}/></Link>
+    return <Link className='movie-thumbnail' to={`/movies/${id}`}><MovieThumbnail {...movie}/></Link>
   })
   return (
     <section className='movies-page'>

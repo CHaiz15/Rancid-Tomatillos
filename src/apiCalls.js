@@ -15,7 +15,34 @@ export const fetchUser = async (email, password) => {
   }
 
   const user = await response.json();
-  console.log(user)
   return user;
+}
 
+export const getRatings = (id) => {
+  return fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${id}/ratings`)
+    .then(res => {
+      if(!res.ok) {
+        throw Error('Something is not right, try again later')
+      }
+      return res.json()})
+}
+
+export const postRating = (rating, id, movie_id) => {
+  const options = {
+    method: 'POST',
+    body: JSON.stringify({
+      movie_id,
+      rating,
+    }),
+    headers: {
+      'Content-Type': 'application/json'  
+    }
+  }
+
+  return fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${id}/ratings`, options)
+          .then(res => {
+            if(!res.ok) {
+              throw Error('Something is not right, try again later')
+            }
+            return res.json()})
 }

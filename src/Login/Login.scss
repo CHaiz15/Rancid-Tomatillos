@@ -1,18 +1,22 @@
-.login-form {
+.login-container {
   margin-top: 5rem;
   display: flex;
   align-items: center;
   flex-direction: column;
   flex-wrap: wrap;
   height: 41.2rem;
-  background-image: url('../assets/theatre-bg.jpg');
-  background-size: cover;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../assets/film-bg.jpg');
+  background-position: bottom, left;
 }
 
-.email-input {
+.login-form {
+  background-color: #fff;
+  margin: 5rem 0 0 0;
+  height: 17rem;
+}
+
+.password-input, .email-input {
+  margin: 2% 0 0 0;
   width: 100%;
 }
 
-.password-input {
-  width: 100%;
-}
