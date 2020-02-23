@@ -7,6 +7,7 @@ import MoviesPage from '../MoviesPage/MoviesPage.js';
 import Login from '../Login/Login'
 import MovieDetails from '../MovieDetails/MovieDetails.js'
 import { loadMovies } from '../Actions'
+import { getMovies } from '../apiCalls';
 
 class App extends Component {
   constructor() {
@@ -15,8 +16,7 @@ class App extends Component {
     }
   }
   componentDidMount() {
-    fetch('https://rancid-tomatillos.herokuapp.com/api/v1/movies')
-      .then(response => response.json())
+    getMovies()
       .then(movies => this.props.loadMovies(movies))
       .catch(err => err)
   }
