@@ -17,7 +17,7 @@ class App extends Component {
   }
   componentDidMount() {
     getMovies()
-      .then(movies => this.props.loadMovies(movies))
+      .then(movies => this.props.loadMovies(movies.movies))
       .catch(err => err)
   }
 
