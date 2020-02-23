@@ -1,10 +1,39 @@
 .movie-thumbnail {
-  width: 21%;
-  margin: 2% 2% 2% 2%;
-  height: 30rem;
+  width: 20rem;
+  margin: 2% 1% 2% 1%;
+  min-height: 15rem;
+  color: rgb(48, 47, 47);
+  background-color: rgb(244, 244, 244);
+  border-radius: 2px;
+  &:hover {
+    transition: all 0.2s ease-out;
+    box-shadow: 4px 3px 8px rgba(38, 38, 38, 0.2);
+  }
 }
 
 .movie-img {
   width: 100%;
+  border-radius: 2px 2px 0 0;
   object-fit: cover;
+}
+
+.thumbnail-title {
+  font-size: 16px;
+  margin-bottom: 1%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.thumbnail-rating {
+  font-size: 14px;
+
+}
+
+.thumbnail-txt {  
+  height: 5rem;
+  padding: 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

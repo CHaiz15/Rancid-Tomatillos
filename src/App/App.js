@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './App.scss';
 import MoviesPage from '../MoviesPage/MoviesPage.js';
@@ -29,14 +29,14 @@ class App extends Component {
     return (
       <main className="App">
         <nav className='nav-bar'>
-          <div className='logo'>
+          <Link to='/' className='logo'>
             <div className='film-icon'></div>
             <div>Rancid Tomas</div>
-          </div>
+          </Link>
           {this.props.user.name ? 
-            <div>
-              <h3>Welcome, {this.props.user.name}</h3>
-              <button onClick={this.logout}>Logout</button>
+            <div className='user-nav'>
+              <h3 className='welcome'>Welcome, {this.props.user.name}</h3>
+              <button className='logout-btn' onClick={this.logout}>Logout</button>
             </div>:
             <NavLink className='login-btn' to='/login' type='button'>Login</NavLink>}
         </nav>
