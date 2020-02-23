@@ -15,7 +15,7 @@ export const fetchUser = async (email, password) => {
   }
 
   const user = await response.json();
-  return user;
+  return user.user;
 }
 
 export const getMovies = () => {

@@ -17,11 +17,11 @@ export class Login extends Component {
   handleSubmit = () => {  
     const { email, password } = this.state;
     fetchUser( email, password ) 
-      .then(data => {
-        getRatings(data.user.id)
+      .then(user => {
+        getRatings(user.id)
           .then(ratings => {
-            this.props.setUser(data)
-            this.props.setRatings(ratings)
+            this.props.setUser(user)
+            this.props.setRatings(ratings.ratings)
           })
       })
   }
