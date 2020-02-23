@@ -11,10 +11,10 @@ const MovieDetails = ({ id, title, backdrop_path, release_date, overview, averag
   
   const ratingsDisplay = () => {
     if(user.loggedOut)  {
-      return <h3>Avg. Rating: {average_rating}</h3>
+      return <h3>Avg. Rating: {Math.round(average_rating)}</h3>
     } else {
       return <div>
-                <h3>Avg. Rating: {average_rating}</h3>
+                <h3>Avg. Rating: {Math.round(average_rating)}</h3>
                   {foundRating === 0 ? 
                     <>
                       <h3>Add Rating: </h3>  
