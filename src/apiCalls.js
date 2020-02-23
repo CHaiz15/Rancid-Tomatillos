@@ -18,6 +18,15 @@ export const fetchUser = async (email, password) => {
   return user;
 }
 
+export const getMovies = () => {
+  return fetch('https://rancid-tomatillos.herokuapp.com/api/v1/movies')
+  .then(res => {
+    if(!res.ok) {
+      throw Error('Something is not right, try again later')
+    }
+    return res.json()})
+}
+
 export const getRatings = (id) => {
   return fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${id}/ratings`)
     .then(res => {
@@ -40,9 +49,9 @@ export const postRating = (rating, id, movie_id) => {
   }
 
   return fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${id}/ratings`, options)
-          .then(res => {
-            if(!res.ok) {
-              throw Error('Something is not right, try again later')
-            }
-            return res.json()})
+    .then(res => {
+      if(!res.ok) {
+        throw Error('Something is not right, try again later')
+      }
+      return res.json()})
 }
