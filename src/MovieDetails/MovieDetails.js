@@ -19,11 +19,14 @@ export class MovieDetails extends Component {
 
   updateRatings = () => {
     if(this.props.ratings.find(currentRating => currentRating.movie_id === this.props.id)){ 
-      deleteRating(this.props.ratings.find(currentRating => currentRating.movie_id === this.props.id).id, this.props.id)
+      deleteRating(this.props.ratings.find(currentRating => currentRating.movie_id === this.props.id).id, this.props.user.id)
     }
-    postRating(this.state.currentMovieRating, this.props.user.id, this.props.id);
-    getRatings(this.props.user.id)
-      .then(ratings => this.props.setRatings(ratings.ratings))
+    postRating(this.state.currentMovieRating, this.props.user.id, this.props.id)
+      .then(res => {
+        getRatings(this.props.user.id)
+        .then(ratings => this.props.setRatings(ratings.ratings))
+      })
+
   }
   
   ratingsDisplay = (user, average_rating, id) => {
