@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './MovieDetails.scss';
+import { setRatings } from '../Actions';
 import { connect } from 'react-redux';
-import { postRating } from '../apiCalls';
+import { postRating, getRatings, deleteRating } from '../apiCalls';
 
 export class MovieDetails extends Component {
   constructor() {
@@ -15,6 +16,15 @@ export class MovieDetails extends Component {
     e.preventDefault()
     this.setState({currentMovieRating: parseInt(e.target.value)})
   }
+
+  updateRatings = () => {
+    if(this.props.ratings.find(currentRating => currentRating.movie_id === this.props.id)){ 
+      deleteRating(this.props.ratings.find(currentRating => currentRating.movie_id === this.props.id).id, this.props.id)
+    }
+    postRating(this.state.currentMovieRating, this.props.user.id, this.props.id);
+    getRatings(this.props.user.id)
+      .then(ratings => this.props.setRatings(ratings.ratings))
+  }
   
   ratingsDisplay = (user, average_rating, id) => {
     if(user.loggedOut)  {
@@ -24,7 +34,7 @@ export class MovieDetails extends Component {
         <div className='ratings-container'>
           <h3>Avg. Rating: {Math.round(average_rating)}</h3>
             <div className='add-rating-box'>
-            {this.state.currentMovieRating !== 0 && <h3>My Rating: {this.state.currentMovieRating}</h3>} 
+            {this.props.ratings.find(currentRating => currentRating.movie_id === this.props.id) && <h3>My Rating: {this.props.ratings.find(currentRating => currentRating.movie_id === this.props.id).rating}</h3>} 
               <form>
               <h3>Add Rating: </h3>  
               <select value={this.state.currentMovieRating} onChange={(e) => this.handleChange(e)}>
@@ -40,7 +50,7 @@ export class MovieDetails extends Component {
                 <option value="9">9</option>
                 <option value="10">10</option>
               </select>
-              <input type='button' onClick={() => postRating(this.state.currentMovieRating, user.id, id)} value='Rate'/>            
+              <input type='button' onClick={() => this.updateRatings()} value='Rate'/>            
               </form>
             </div>
         </div>
@@ -77,4 +87,8 @@ const mapStateToProps = state => ({
   user: state.user,
 })
 
-export default connect(mapStateToProps)(MovieDetails);
+export const mapDispatchToProps = dispatch => ({
+  setRatings: ratings => dispatch(setRatings(ratings))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieDetails);
