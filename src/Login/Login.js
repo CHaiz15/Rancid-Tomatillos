@@ -36,6 +36,7 @@ export class Login extends Component {
         <form className='login-form'> 
           <label>Email:</label>
           <input 
+            placeholder='Email'
             className='email-input'
             name='email' 
             value={this.state.email} 
@@ -43,6 +44,7 @@ export class Login extends Component {
           />
           <label>Password:</label>
           <input 
+            placeholder='Password'
             className='password-input'
             type='password'
             name='password' 
