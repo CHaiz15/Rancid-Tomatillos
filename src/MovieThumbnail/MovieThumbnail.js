@@ -1,7 +1,7 @@
 import React from 'react';
 import './MovieThumbnail.scss'
 
-const MovieThumbnail = ({ title, average_rating, backdrop_path, ratings }) => {
+export const MovieThumbnail = ({ title, average_rating, backdrop_path, ratings }) => {
   return (
     <span>
       <img className='movie-img' src={backdrop_path} alt={title + ' image'}></img>
