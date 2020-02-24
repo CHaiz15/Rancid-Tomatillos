@@ -10,13 +10,36 @@
 }
 
 .login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
   background-color: #fff;
   margin: 5rem 0 0 0;
-  height: 17rem;
+  height: 18rem;
+  width: 50%;
 }
 
 .password-input, .email-input {
+  font-size: 15px;
+  height: 30px;
   margin: 2% 0 0 0;
-  width: 100%;
+  width: 80%;
+}
+
+.login_button {
+  padding: 1%;
+  border-radius: 30px;
+  font-size: 18px;
+  width: 7rem;
+  text-align: center;
+  background-color: #A16447;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 3px #999;
+}
+
+.login_button:hover {
+  background-color: rgb(107, 57, 34);
 }
 
