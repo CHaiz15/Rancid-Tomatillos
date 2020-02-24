@@ -37,6 +37,8 @@ export const getRatings = (id) => {
 }
 
 export const postRating = (rating, id, movie_id) => {
+  console.log(rating, id, movie_id);
+  
   const options = {
     method: 'POST',
     body: JSON.stringify({
@@ -55,3 +57,21 @@ export const postRating = (rating, id, movie_id) => {
       }
       return res.json()})
 }
+
+export const deleteRating = (rating_id, id) => {
+  const options = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+
+  return fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${id}/ratings/${rating_id}`, options)
+    .then(res => {
+      if(!res.ok) {
+        throw Error('Something is not right, try again later')
+      }
+      return res.json()})
+}
+
+
