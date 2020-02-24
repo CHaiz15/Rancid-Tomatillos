@@ -9,7 +9,7 @@ import MovieDetails from '../MovieDetails/MovieDetails.js'
 import { loadMovies } from '../Actions'
 import { getMovies } from '../apiCalls';
 
-class App extends Component {
+export class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -54,12 +54,12 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   movies: state.movies,
   user: state.user,
 })
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   loadMovies: movies => dispatch(loadMovies(movies))
 })
 
