@@ -13,7 +13,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 50rem;
+  height: 41.2rem;
   width: 100%;
   position: absolute;
   z-index: -1;
@@ -43,9 +43,10 @@
 }
 
 .detail-img {
-  width: 30%;
+  width: auto;
+  max-height: 550px;
   min-height: 350px;
-  margin: 5%;
+  margin: 3%;
   box-shadow: 0px 6px 16px rgba(38, 38, 38, 0.6);
   @media (max-width: 750px) {
     width: 90%;
