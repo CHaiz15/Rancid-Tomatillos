@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieThumbnail should match the snapshot 1`] = `
+<span>
+  <img
+    alt="undefined image"
+    className="movie-img"
+  />
+  <div
+    className="thumbnail-txt"
+  >
+    <h3
+      className="thumbnail-title"
+    />
+    <h3
+      className="thumbnail-rating"
+    >
+      Rating: 
+      NaN
+    </h3>
+  </div>
+</span>
+`;
