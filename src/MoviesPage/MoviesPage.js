@@ -4,7 +4,7 @@ import './MoviesPage.scss';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const MoviesPage = ({ movies }) => {
+export const MoviesPage = ({ movies }) => {
   const listOfMovies = movies.map(movie => {
     const { id } = movie;
     return <Link className='movie-thumbnail' to={`/movies/${id}`}><MovieThumbnail {...movie}/></Link>
@@ -19,7 +19,7 @@ const MoviesPage = ({ movies }) => {
   )
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   movies: state.movies,
 })
 
