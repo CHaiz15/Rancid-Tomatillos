@@ -16,7 +16,7 @@ export class MovieDetails extends Component {
     this.setState({currentMovieRating: parseInt(e.target.value)})
   }
   
-  ratingsDisplay = (user, average_rating) => {
+  ratingsDisplay = (user, average_rating, id) => {
     if(user.loggedOut)  {
       return <h3>Avg. Rating: {Math.round(average_rating)}</h3>
     } else {
@@ -28,7 +28,7 @@ export class MovieDetails extends Component {
               <form>
               <h3>Add Rating: </h3>  
               <select value={this.state.currentMovieRating} onChange={(e) => this.handleChange(e)}>
-                {/* <option value="">Rating</option> */}
+                <option value="">Rating</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -40,7 +40,7 @@ export class MovieDetails extends Component {
                 <option value="9">9</option>
                 <option value="10">10</option>
               </select>
-              {/* <input type='button' onClick={() = } value='Rate'/>             */}
+              <input type='button' onClick={() => postRating(this.state.currentMovieRating, user.id, id)} value='Rate'/>            
               </form>
             </div>
         </div>
@@ -55,7 +55,8 @@ export class MovieDetails extends Component {
   }
 
   render() {
-    const { id, title, poster_path, backdrop_path, release_date, overview, average_rating, user, ratings } = this.props
+    const { id, title, poster_path, backdrop_path, release_date, overview, average_rating, user } = this.props
+    
     return (
      <article className='movie-details-pg' >
       <div className='float-img' style={{backgroundImage: `url(${backdrop_path})`}}></div>
@@ -63,7 +64,7 @@ export class MovieDetails extends Component {
         <h2 className='detail-title'>{title}</h2>
         <p className='detail-release'>Released: {release_date}</p>
         <h4 className='detail-overview'>{overview}</h4>
-        <h4>{this.ratingsDisplay(user, average_rating, ratings, id)}</h4> 
+        <h4>{this.ratingsDisplay(user, average_rating, id)}</h4> 
       </section>
       <img className='detail-img' alt={title + 'image'}src={poster_path}/>
      </article>
