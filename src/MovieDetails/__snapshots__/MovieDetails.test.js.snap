@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieDetails should match the snapshot 1`] = `
+<article
+  className="movie-details-pg"
+>
+  <div
+    className="float-img"
+    style={
+      Object {
+        "backgroundImage": "url(undefined)",
+      }
+    }
+  />
+  <section
+    className="movie-info"
+  >
+    <h2
+      className="detail-title"
+    />
+    <p
+      className="detail-release"
+    >
+      Released: 
+    </p>
+    <h4
+      className="detail-overview"
+    />
+    <div
+      className="ratings-container"
+    >
+      <h3
+        className="rating"
+      >
+        Avg. Rating:  
+        NaN
+      </h3>
+      <div>
+        <h3
+          className="rating"
+        >
+          My Rating:  
+          6
+        </h3>
+        <form
+          className="add-rating"
+        >
+          <h3
+            className="rating"
+          >
+            Add Rating: 
+          </h3>
+          <div
+            className="add-rating-box"
+          >
+            <select
+              className="rating-select"
+              onChange={[Function]}
+              value={6}
+            >
+              <option
+                value="0"
+              >
+                -
+              </option>
+              <option
+                value="1"
+              >
+                1
+              </option>
+              <option
+                value="2"
+              >
+                2
+              </option>
+              <option
+                value="3"
+              >
+                3
+              </option>
+              <option
+                value="4"
+              >
+                4
+              </option>
+              <option
+                value="5"
+              >
+                5
+              </option>
+              <option
+                value="6"
+              >
+                6
+              </option>
+              <option
+                value="7"
+              >
+                7
+              </option>
+              <option
+                value="8"
+              >
+                8
+              </option>
+              <option
+                value="9"
+              >
+                9
+              </option>
+              <option
+                value="10"
+              >
+                10
+              </option>
+            </select>
+            <input
+              className="rate-btn"
+              onClick={[Function]}
+              type="button"
+              value="Rate"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  <img
+    alt="undefinedimage"
+    className="detail-img"
+  />
+</article>
+`;

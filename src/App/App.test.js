@@ -4,9 +4,13 @@ import { shallow } from 'enzyme';
 import { loadMovies } from '../actions';
 
 describe('App', () => {
-  let wrapper,mockState
-  it.skip('should match the snapshot', () => {
-    wrapper = shallow(<App />);
+  let wrapper,mockState,mockUser
+  it('should match the snapshot', () => {
+    mockUser = {
+      name: 'Ken',
+      id: 23
+    }
+    wrapper = shallow(<App user={mockUser}/>);
 
     expect(wrapper).toMatchSnapshot();
   });
