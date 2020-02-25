@@ -1,4 +1,4 @@
-import { fetchUser, getMovies,  getRatings, postRating } from './apiCalls'
+import { fetchUser, getMovies,  getRatings, postRating, deleteRating } from './apiCalls'
 
 describe('apiCalls', () => {
   describe('fetchUser', () => {
@@ -156,6 +156,51 @@ describe('apiCalls', () => {
         })
       })
       expect(postRating(mockRating, mockUserId, mockMovieId)).rejects.toEqual(Error('Something is not right, try again later'))
+    })
+  })
+
+  describe('deleteRating', () => {
+    let mockRatingId, mockUserId, mockOptions, mockResponse
+
+    beforeEach(() => {
+      mockRatingId = 420
+      mockUserId = 23
+      mockResponse = {status: 204}
+      mockOptions = {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(mockRatingObject)
+        })
+      })
+  
+    })
+
+    it('should be called with the correct url and options', () => {
+      deleteRating(mockRatingId, mockUserId)
+
+      expect(window.fetch).toHaveBeenCalledWith(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${mockUserId}/ratings/${mockRatingId}`, mockOptions)
+    })
+
+    it('should return 204 status code', () => {
+      deleteRating(mockRatingId, mockUserId)
+        .then(message => 
+          expect(window.fetch).toEqual(mockResponse)        
+        )
+    })
+
+    it('should throw an error when response is not ok', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: false
+        })
+      })
+      expect(deleteRating(mockRatingId, mockUserId)).rejects.toEqual(Error('Something is not right, try again later'))
     })
   })
 })
