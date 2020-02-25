@@ -1,3 +1,7 @@
+.login-label {
+  font-size: 1.2em;
+}
+
 .login-container {
   margin-top: 5rem;
   display: flex;
@@ -7,6 +11,7 @@
   height: 41.2rem;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../assets/film-bg.jpg');
   background-position: bottom, left;
+  box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
 }
 
 .login-form {
@@ -15,8 +20,8 @@
   align-items: center;
   justify-content: space-around;
   background-color: #fff;
-  margin: 5rem 0 0 0;
-  height: 18rem;
+  margin: 7rem 0 0 0;
+  height: 20rem;
   width: 50%;
 }
 
@@ -27,19 +32,41 @@
   width: 80%;
 }
 
-.login_button {
-  padding: 1%;
-  border-radius: 30px;
-  font-size: 18px;
-  width: 7rem;
-  text-align: center;
-  background-color: #A16447;
-  color: white;
-  font-weight: 600;
-  box-shadow: 0 3px #999;
+.hidden {
+  visibility: hidden;
 }
 
-.login_button:hover {
-  background-color: rgb(107, 57, 34);
+.input-error {
+  text-align: center;
+  color: rgb(249, 50, 50);
+  animation: shake-top 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
 }
+
+@keyframes shake-top {
+  0%,
+  100% {
+    transform: rotate(0deg);
+    transform-origin: 50% 0;
+  }
+  10% {
+    transform: rotate(0deg);
+  }
+  20%,
+  40%,
+  60% {
+    transform: rotate(-1deg);
+  }
+  30%,
+  50%,
+  70% {
+    transform: rotate(1deg);
+  }
+  80% {
+    transform: rotate(1deg);
+  }
+  90% {
+    transform: rotate(-1deg);
+  }
+}
+
 
