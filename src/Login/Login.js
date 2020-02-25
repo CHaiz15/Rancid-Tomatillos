@@ -4,6 +4,7 @@ import { fetchUser, getRatings } from '../apiCalls';
 import { setUser, setRatings } from '../Actions';
 import { connect } from 'react-redux';
 import './Login.scss';
+import PropTypes from 'prop-types';
 
 export class Login extends Component {
   constructor() {
@@ -86,3 +87,8 @@ export const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
+
+Login.propTypes = {
+  setUser: PropTypes.func.isRequired,
+  setRatings: PropTypes.func.isRequired,
+}

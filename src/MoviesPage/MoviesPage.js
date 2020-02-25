@@ -3,6 +3,7 @@ import MovieThumbnail from '../MovieThumbnail/MovieThumbnail.js';
 import './MoviesPage.scss';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export const MoviesPage = ({ movies }) => {
   const listOfMovies = movies.map(movie => {
@@ -24,3 +25,7 @@ export const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps)(MoviesPage);
+
+MoviesPage.propTypes = {
+  movies: PropTypes.array.isRequired,
+}
