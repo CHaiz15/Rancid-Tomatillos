@@ -24,6 +24,7 @@
   - Initial setup of Redux implementation and working with data from store
 
 ### Overview of Site:
+Rancid Tomas is a movie rating application.  Without logging in, a user can view all movies as well as the movies average rating.  When logged in, a user can make ratings and see or make changes to their current rating. If you’re an entertainment fan looking for a recommendation, or to share an opinion, you’ve come to the right place.
 
 ### Rancid Tomas?
 #### Login:
@@ -50,21 +51,33 @@
 
 
 ## Setup
+Fork then clone down this repository. 
 
+Then install the library dependencies. Run:
 
 ```
 npm install
 ```
 
+To verify that it is setup correctly, run `npm start` in your terminal.  This will launch browser with localhost.
+
+## How to View Your Code in Action
+
+In the terminal, run:
 
 ```
 npm start
 ```
 
+Browser should open up with localhost:3000
+
+
+## Running Tests
+
+Run your test suite using the command:
 
 ```
 npm test
 ```
 
-
-
+The test results will output to the terminal.
