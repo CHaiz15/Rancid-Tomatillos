@@ -26,35 +26,38 @@ export class MovieDetails extends Component {
         getRatings(this.props.user.id)
         .then(ratings => this.props.setRatings(ratings.ratings))
       })
-
   }
   
-  ratingsDisplay = (user, average_rating, id) => {
+  ratingsDisplay = (user, average_rating) => {
     if(user.loggedOut)  {
       return <h3>Avg. Rating: {Math.round(average_rating)}</h3>
     } else {
       return (
         <div className='ratings-container'>
-          <h3>Avg. Rating: {Math.round(average_rating)}</h3>
-            <div className='add-rating-box'>
-            {this.props.ratings.find(currentRating => currentRating.movie_id === this.props.id) && <h3>My Rating: {this.props.ratings.find(currentRating => currentRating.movie_id === this.props.id).rating}</h3>} 
-              <form>
-              <h3>Add Rating: </h3>  
-              <select value={this.state.currentMovieRating} onChange={(e) => this.handleChange(e)}>
-                <option value="">Rating</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-              </select>
-              <input type='button' onClick={() => this.updateRatings()} value='Rate'/>            
-              </form>
+          <h3 className='rating'>Avg. Rating:  {Math.round(average_rating)}</h3>
+            <div>
+              {this.props.ratings.find(currentRating => currentRating.movie_id === this.props.id) 
+                &&
+              <h3 className='rating'>My Rating:  {this.props.ratings.find(currentRating => currentRating.movie_id === this.props.id).rating}</h3>} 
+              <form className='add-rating'>
+                <h3 className='rating'>Add Rating: </h3> 
+                  <div className='add-rating-box'>
+                    <select className='rating-select' value={this.state.currentMovieRating} onChange={(e) => this.handleChange(e)}>
+                      <option value="0">-</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                    </select>
+                    <input className='rate-btn' type='button' onClick={() => this.updateRatings()} value='Rate'/>            
+                  </div>
+              </form> 
             </div>
         </div>
       )
@@ -77,7 +80,7 @@ export class MovieDetails extends Component {
         <h2 className='detail-title'>{title}</h2>
         <p className='detail-release'>Released: {release_date}</p>
         <h4 className='detail-overview'>{overview}</h4>
-        <h4>{this.ratingsDisplay(user, average_rating, id)}</h4> 
+        {this.ratingsDisplay(user, average_rating, id)}
       </section>
       <img className='detail-img' alt={title + 'image'}src={poster_path}/>
      </article>

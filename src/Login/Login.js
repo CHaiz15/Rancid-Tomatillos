@@ -10,11 +10,13 @@ export class Login extends Component {
     super();
     this.state = { 
       email: '',
-      password: 654321
+      password: '',
+      showError: false,
     }
   }
 
   handleSubmit = () => {  
+    this.setState({showError: false})
     const { email, password } = this.state;
     fetchUser( email, password ) 
       .then(user => {
@@ -24,17 +26,27 @@ export class Login extends Component {
             this.props.setRatings(ratings.ratings)
           })
       })
+      .catch(err => err)
   }
 
   handleChange = (e) => {
     this.setState({[e.target.name]: e.target.value})
   }
 
+  submitForm = (e) => {
+    if (this.state.password && this.state.email) {
+      this.handleSubmit()
+    } else {
+      e.preventDefault()
+      this.setState({showError: true})
+    }
+  }
+
   render() {
     return(
       <section className='login-container'>
         <form className='login-form'> 
-          <label>Email:</label>
+          <label className='login-label'>Email</label>
           <input 
             placeholder='Email'
             className='email-input'
@@ -42,7 +54,7 @@ export class Login extends Component {
             value={this.state.email} 
             onChange={(e) => this.handleChange(e)}
           />
-          <label>Password:</label>
+          <label className='login-label'>Password</label>
           <input 
             placeholder='Password'
             className='password-input'
@@ -51,11 +63,12 @@ export class Login extends Component {
             value={this.state.password} 
             onChange={(e) => this.handleChange(e)}
           />
+          <h4 className={this.state.showError ? 'input-error':'hidden'}>Please fill all inputs.</h4>
           <NavLink
-            className='login_button'
+            className='login-btn'
             to='/'
             type='button'
-            onClick={this.handleSubmit}
+            onClick={this.submitForm}
           >ENTER </NavLink>
         </form>
       </section>
